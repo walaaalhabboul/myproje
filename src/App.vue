@@ -31,7 +31,7 @@
         <v-btn
           text
           @click="
-            $router.push('/ToDo');
+            $router.push('/ToD');
             compone = 'ToDo';
           "
         >

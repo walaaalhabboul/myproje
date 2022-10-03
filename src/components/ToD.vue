@@ -11,9 +11,7 @@
         </v-col>
 
         <v-col>
-          <v-btn class="pink white--text" @click="add">
-            Add Task
-          </v-btn>
+          <v-btn class="pink white--text" @click="add" @keyup.enter="add"> Add Task </v-btn>
         </v-col>
 
         <v-col>
@@ -35,14 +33,20 @@
 
             <v-list subheader>
               <v-card elevation="3" class="mx-auto" max-width="344" outlined>
-                <v-list-item v-for="task in arrback.filter(i => !i.state)" :key="task.id">
+                <v-list-item
+                  v-for="task in arrback.filter((i) => !i.state)"
+                  :key="task.id"
+                >
                   <v-list-item-action>
-                    <v-checkbox  v-model="task.state" @input="task.state=!task.state"  ></v-checkbox>
+                    <v-checkbox
+                      v-model="task.state"
+                      @input="task.state = !task.state"
+                    ></v-checkbox>
                   </v-list-item-action>
                   <v-list-item-content>
                     {{ task.name }}
                   </v-list-item-content>
-                   
+
                   <v-list-item-action>
                     <v-btn icon>
                       <v-icon color="grey lighten-1" @click="delet(task.id)">
@@ -53,8 +57,7 @@
                 </v-list-item>
               </v-card>
             </v-list>
-            <!-- <span class="delete" @click="delet(index)">delete</span> 
-            "-->
+            
           </div>
         </v-col>
 
@@ -64,15 +67,17 @@
             <br />
             <v-list subheader>
               <v-card elevation="3" class="mx-auto" max-width="344" outlined>
-                <v-list-item  v-for="task in arrback.filter(i => i.state)" :key="task.id">
-                 
+                <v-list-item
+                  v-for="task in arrback.filter((i) => i.state)"
+                  :key="task.id"
+                >
                   <v-list-item-content>
                     {{ task.name }}
                   </v-list-item-content>
 
                   <v-list-item-action>
                     <v-btn icon>
-                      <v-icon color="grey lighten-1" @click=" delet(task.id)">
+                      <v-icon color="grey lighten-1" @click="delet(task.id)">
                         mdi-delete</v-icon
                       >
                     </v-btn>
@@ -88,61 +93,43 @@
 </template>
 
 <script>
-// import draggable from "vuedraggable";
-//   import TaskCard from "./TaskCard.vue";
 export default {
   components: {},
 
   data() {
     return {
-       
-      newTask: {name:"",id:null,state:false},
-    
-      arrback: [{ name: "go to the gym" ,id:1,state:false},{ name: "study" ,id:2,state:false}],
-   
+      newTask: { name: "", id: null, state: false },
+
+      arrback: [
+        { name: "go to the gym", id: 1, state: false },
+        { name: "study", id: 2, state: false },
+      ],
     };
   },
   methods: {
     add() {
       if (this.newTask.name) {
-        this.newTask.id=this.arrback.length+1
-        this.arrback.push({...this.newTask});
-        // console.log( this.i);
-         this.newTask.name="";
-
+        this.newTask.id = this.arrback.length + 1;
+        this.arrback.push({ ...this.newTask });
+     
+        this.newTask.name = "";
       }
     },
     delet(id) {
-        const index = this.arrback.findIndex(object => {
-            return object.id === id;
-            })
-      this.arrback.splice(index,1);
+      const index = this.arrback.findIndex((object) => {
+        return object.id === id;
+      });
+      this.arrback.splice(index, 1);
     },
     delall() {
       this.arrback = [];
     },
-    todone(I){
-        this.done.push(I)
-    }
+    todone(I) {
+      this.done.push(I);
+    },
   },
-
-
-          
-          }
-
+};
 </script>
 
 <style></style>
 
-
-<!-- watch: {
-    checked(val) {
-      if (val) {
-        todone();
-      } 
-    },}
-
-
-
- v-if=checked ? todone(task)
--->
