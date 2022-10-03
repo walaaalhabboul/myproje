@@ -5,6 +5,7 @@ import ListS from './components/ListS.vue'
 import TaskCard from './components/TaskCard.vue'
 // import NavBr from './components/NavBr.vue'
 import ToDo from './components/ToDo.vue'
+import ToD from './components/ToD.vue'
 
 
 const routes=[
@@ -14,6 +15,7 @@ const routes=[
 // {path: '/tablo1', component: TabloS ,name:"tablos"}
 {path: '/TaskCard', component: TaskCard ,name:"TaskCard"},
 {path: '/ToDo', component: ToDo ,name:"ToDo"},
+{path: '/ToD', component: ToD ,name:"ToD"},
 // {path: '/ToDo', component: NavBr ,name:"NavBr"},
 
 

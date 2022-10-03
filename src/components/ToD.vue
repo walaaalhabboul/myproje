@@ -1,0 +1,152 @@
+<template>
+  <div>
+    <v-form>
+      <v-row>
+        <v-col>
+          <v-text-field
+            v-model="newTask.name"
+            @keyup.enter="add"
+            label="newTask"
+          ></v-text-field>
+        </v-col>
+
+        <v-col>
+          <v-btn class="pink white--text" @click="add">
+            Add Task
+          </v-btn>
+        </v-col>
+
+        <v-col>
+          <v-btn class="pink white--text" @click="delall">
+            Delete Backlog
+          </v-btn>
+        </v-col>
+      </v-row>
+    </v-form>
+
+    <!-- starting of todo -->
+
+    <v-container class="my-5">
+      <v-layout row justify-space-between>
+        <v-col>
+          <div>
+            <h2 class="red white--text">backlog</h2>
+            <br />
+
+            <v-list subheader>
+              <v-card elevation="3" class="mx-auto" max-width="344" outlined>
+                <v-list-item v-for="(task,index) in arrback" :key="task.id">
+                  <v-list-item-action>
+                    <v-checkbox  v-model="checked"  ></v-checkbox>
+                  </v-list-item-action>
+                  <v-list-item-content>
+                    {{ task.name }}
+                  </v-list-item-content>
+                   
+                  <v-list-item-action>
+                    <v-btn icon>
+                      <v-icon color="grey lighten-1" @click="delet(index)">
+                        mdi-delete</v-icon
+                      >
+                    </v-btn>
+                  </v-list-item-action>
+                </v-list-item>
+              </v-card>
+            </v-list>
+            <!-- <span class="delete" @click="delet(index)">delete</span> -->
+          </div>
+        </v-col>
+
+        <v-col>
+          <div>
+            <h2 class="red white--text">Done</h2>
+            <br />
+            <v-list subheader>
+              <v-card elevation="3" class="mx-auto" max-width="344" outlined>
+                <v-list-item  v-for="(task,index) in done" :key="task.id">
+                 
+                  <v-list-item-content>
+                    {{ task.name }}
+                  </v-list-item-content>
+
+                  <v-list-item-action>
+                    <v-btn icon>
+                      <v-icon color="grey lighten-1" @click=" delet1(index)">
+                        mdi-delete</v-icon
+                      >
+                    </v-btn>
+                  </v-list-item-action>
+                </v-list-item>
+              </v-card>
+            </v-list>
+          </div>
+        </v-col>
+      </v-layout>
+    </v-container>
+  </div>
+</template>
+
+<script>
+// import draggable from "vuedraggable";
+//   import TaskCard from "./TaskCard.vue";
+export default {
+  components: {},
+
+  data() {
+    return {
+        i:2,
+       
+      newTask: {name:"",id:null,state:false},
+    
+      arrback: [{ name: "go to the gym" ,id:1},{ name: "study" ,id:2}],
+   
+      
+      done: [{ name: "ewatsttata",id:1 }],
+    //   checked:false
+    };
+  },
+  methods: {
+    add() {
+      if (this.newTask.name) {
+    //    this.i=this.i+1;
+    //     this.newTask.id=this.i;
+        this.arrback.push({ name: this.newTask.name });
+        // console.log( this.i);
+         this.newTask.name="";
+
+      }
+    },
+    delet(index) {
+      this.arrback.splice(index,1);
+    },
+    delall() {
+      this.arrback = [];
+    },
+    todone(I){
+        this.done.push(I)
+    },
+    delet1(index) {
+      this.done.splice(index, 1);
+    },
+  },
+
+
+          
+          }
+
+</script>
+
+<style></style>
+
+
+<!-- watch: {
+    checked(val) {
+      if (val) {
+        todone();
+      } 
+    },}
+
+
+
+ v-if=checked ? todone(task)
+-->
