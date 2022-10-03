@@ -1,7 +1,6 @@
 <template>
   <div>
-    
-    
+  
   <v-data-table
     :headers="headers"
     :items="books"
@@ -37,7 +36,7 @@
           </template>
           <v-card>
             <v-card-title>
-              <span class="text-h5">{{ formTitle }}</span>
+              <!-- <span class="text-h5">{{ formTitle }}</span> -->
             </v-card-title>
             <v-card-text>
               <v-container>
