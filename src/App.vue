@@ -39,6 +39,16 @@
         </v-btn>
 
         <v-divider vertical></v-divider>
+        <v-btn
+          text
+          @click="
+            $router.push('/form');
+            compone = 'Forms';
+          "
+        >
+         Form
+        </v-btn>
+
       </v-toolbar-items>
       <v-spacer></v-spacer>
       <span class="subheading">My Home</span>
