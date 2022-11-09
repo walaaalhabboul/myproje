@@ -93,6 +93,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   components: {},
 
@@ -105,6 +107,12 @@ export default {
         { name: "study", id: 2, state: false },
       ],
     };
+  },
+  created(){
+axios.post('https://api.oniki.mgsapp.com/api/dashboard/me').then(res =>{
+  console.log(res)
+})
+
   },
   methods: {
     add() {

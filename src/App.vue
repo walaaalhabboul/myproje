@@ -51,7 +51,16 @@
 
       </v-toolbar-items>
       <v-spacer></v-spacer>
-      <span class="subheading">My Home</span>
+      
+      <v-btn
+          text
+          @click="
+            $router.push('/SignIn');
+            compone = 'SignIn';
+          "
+        >
+        Sign in
+        </v-btn>
     </v-toolbar>
 
     <nav>
@@ -76,6 +85,9 @@ export default {
     return {
       compone: "",
     };
+  },
+  created() {
+    this.$store.dispatch('getitem');
   },
 };
 </script>
