@@ -37,7 +37,7 @@
         </v-btn>
       </v-col>
     </v-row>
-    <p>{{token}}</p>
+    <p>{{getToken}}</p>
   </v-form>
 </template>
 
@@ -56,7 +56,7 @@ export default {
       isloading: false,
     };
   },
-  computed: { ...mapState(["token"]), ...mapGetters(["token"]) },
+  computed: { ...mapState(["token"]), ...mapGetters(["getToken"]) },
   methods: {
     logout(){
       this.$store.dispatch('logout');
@@ -65,20 +65,6 @@ export default {
 
     },
     submit() {
-      // .post(`https://api.oniki.mgsapp.com/api/dashboard/login`, {
-      //     email: this.name,
-      //     password: this.password,
-      // }, {
-
-      // // headers: {
-      // //   Authorization: "Bearer ${token}",
-      // //   token: localStorage.getItem("token")
-      // // }
-
-      // }).then(res=>{
-      //     console.log(res);
-
-      // })
       const actionPayload = {
         email: this.email,
         password: this.password,
@@ -87,13 +73,17 @@ export default {
         console.log(res);
         // if (token && userId)
         this.$store.commit('setToken', res.data.data.token.access_token);
-         console.log( "res.data.data.token",res.data.data.token.access_token)
-         this.$router.push("/ToD")
+        this.$store.dispatch('me').then(res =>{
+        this.$store.commit('setUser',res.data.data)
+ 
+})
+        //  if($store.getters.getToken)
+         this.$router.push("/UserInfo")
 
     })
       
 
-      //  created
+      //  created if token push route
 
       //     if (this.name && this.password) {
       //  console.log(this.name);

@@ -81,10 +81,12 @@
                         mdi-delete</v-icon
                       >
                     </v-btn>
+                    
                   </v-list-item-action>
                 </v-list-item>
               </v-card>
             </v-list>
+            <p>{{$store.getters.getToken}}</p>
           </div>
         </v-col>
       </v-layout>
@@ -109,6 +111,7 @@ export default {
     };
   },
   created(){
+    // this.$store.getters.getToken
 axios.post('https://api.oniki.mgsapp.com/api/dashboard/me').then(res =>{
   console.log(res)
 })

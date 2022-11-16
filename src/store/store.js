@@ -2,27 +2,27 @@ import axios from 'axios'
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-
 Vue.use(Vuex)
-
 export const store =new Vuex.Store({
 state:{
-    userId: null,
-    token: null,
+    user: null,
+    name:null,
+    token: localStorage.getItem('token'),
 
 },
 getters:{
-    token(state) {
-        return state.token;
-      },
-    
+    getToken({token}) {
+      // axios.defaults.headers.common['Authorization'] = 'Bearer '+ token;
+      return token ? token : null
+    }
+
+
 },
 
 mutations:{  
-    setUser(state, payload) {
-  
-        state.userId = payload.userId;
-     
+    setUser(state, user) {
+        state.user = user;
+        // localStorage.setItem('id', id);
       },
       setToken(state, token) {
         state.token = token;
@@ -30,7 +30,6 @@ mutations:{
         axios.defaults.headers.common['Authorization'] = 'Bearer '+ token;
      
     },
-
 },
 actions:{ 
     login(context, payload) {
@@ -44,22 +43,16 @@ actions:{
     //   Authorization: "Bearer ${token}",
     //   token: localStorage.getItem("token")
     // }
-  
-    })
+  })
   },logout(context) {
     localStorage.removeItem('token');
     
-    context.commit('setToken', {
-      token: null,
-    
-    });
+    context.commit('setToken', '');
+    context.commit('setUser', '');
   },
-  getitem(context)
-  { const token = localStorage.getItem('token');}
-
-
-
-
+  me(){
+    return axios.post('https://api.oniki.mgsapp.com/api/dashboard/me')
+  }
 }
 
 

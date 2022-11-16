@@ -4,6 +4,8 @@ import ToD from './components/ToD.vue'
 import FormS from './components/FormS.vue'
 import SignUp from './components/SignUp.vue'
 import SignIn from './components/SignIn.vue'
+import UserInfo from './components/UserInfo.vue'
+
 
 
 const routes=[
@@ -13,6 +15,7 @@ const routes=[
 {path: '/form', component: FormS ,name:"FormS"},
 {path: '/Signup', component: SignUp ,name:"Signup"},
 {path: '/SignIn', component: SignIn ,name:"SignIn"},
+ {path: '/UserInfo', component: UserInfo ,name:"UserInfo"},
 
 
 ]

@@ -32,6 +32,10 @@
       <v-btn class="mr-4" :loading="isloading" @click="loadData">
         load data
       </v-btn>
+      <!-- <v-btn class="mr-4"  @click="printi">
+       print
+      </v-btn> -->
+
     </v-row>
     <p>{{ responsdata[lastitem] }}</p>
   </v-form>
@@ -80,6 +84,7 @@ export default {
     reset() {
       this.$refs.form.reset();
     },
+    // printi(){console.log(this.state.token);}
   },
 };
 </script>
