@@ -5,7 +5,6 @@ import FormS from './components/FormS.vue'
 import SignUp from './components/SignUp.vue'
 import SignIn from './components/SignIn.vue'
 import UserInfo from './components/UserInfo.vue'
-import WaPaginationnfo from './components/WaPagination.vue'
 import ItemsOfpagination from './components/ItemsOfpagination.vue'
 
 
@@ -17,7 +16,6 @@ const routes=[
 {path: '/Signup', component: SignUp ,name:"Signup"},
 {path: '/SignIn', component: SignIn ,name:"SignIn"},
  {path: '/UserInfo', component: UserInfo ,name:"UserInfo"},
- {path: '/WaPagination', component: WaPaginationnfo ,name:"WaPagination"},
  {path: '/items-pagination', component: ItemsOfpagination ,name:"ItemsOfpagination"},
 
 ]
